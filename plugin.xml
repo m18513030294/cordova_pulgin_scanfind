@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin  id="com.carshop.scancarid" version="0.0.1" 
+         xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+         xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>scancarid</name>
+  <js-module name="scancarid" src="www/scancarid.js">
+    <clobbers target="cordova.plugins.scancarid" />
+  </js-module>
+
+  <plugin name="cordova-plugin-broadcaster" spec="https://github.com/bsorrentino/cordova-broadcaster.git" />
+
+  <platform name="android">
+  <config-file parent="/*" target="res/xml/config.xml">
+    <feature name="scancarid">
+      <param name="android-package" value="com.CarOCR.scancarid" />
+    </feature>
+  </config-file>
+
+
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <activity android:name="com.CarOCR.MySurfaceViewActivity" android:screenOrientation="landscape" />
+    </config-file>
+
+  <config-file parent="/*" target="AndroidManifest.xml">
+  <!-- 此处添加所需权限 -->  
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!--<uses-feature android:name="android.hardware.camera"/>-->
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+  </config-file>
+  
+  <source-file src="src/android/code/scancarid.java" target-dir="src/com/CarOCR" />
+  <source-file src="src/android/code/CarOCREngine.java" target-dir="src/com/CarOCR" />  
+  <source-file src="src/android/code/MySurfaceViewActivity.java" target-dir="src/com/CarOCR" />  
+  <source-file src="src/android/code/ResolutionSet.java" target-dir="src/com/CarOCR" />
+
+  <source-file src="src/android/res/drawable-hdpi/camera.png" target-dir="res/drawable-hdpi" /> 
+  <source-file src="src/android/res/drawable-hdpi/check49.png" target-dir="res/drawable-hdpi" /> 
+  <source-file src="src/android/res/drawable-hdpi/da.png" target-dir="res/drawable-hdpi" /> 
+  <!--<source-file src="src/android/res/drawable-hdpi/icon.png" target-dir="res/drawable-hdpi" /> -->
+  <source-file src="src/android/res/drawable-hdpi/imagefolder.png" target-dir="res/drawable-hdpi" /> 
+  <source-file src="src/android/res/drawable-hdpi/xiao.png" target-dir="res/drawable-hdpi" /> 
+  <!--<source-file src="src/android/res/drawable-ldpi/icon.png" target-dir="res/drawable-ldpi" /> -->
+  <!--<source-file src="src/android/res/drawable-mdpi/icon.png" target-dir="res/drawable-ldpi" /> -->
+  <source-file src="src/android/res/layout/main.xml" target-dir="res/layout" /> 
+  <source-file src="src/android/res/values/colors.xml" target-dir="res/values" />
+  <source-file src="src/android/res/values/strings.xml" target-dir="res/values" />     
+
+
+  <source-file src="src/android/assets/mPcaLda.dic" target-dir="assets" />
+  <source-file src="src/android/libs/armeabi/libcarRecog.so" target-dir="libs/armeabi" />   
+  
+  <!--<lib-file src="src/android/libs/armeabi/libcarRecog.so" />-->
+  <assets-file />
+  <edit-config file="AndroidManifest.xml" target="/manifest/uses-sdk" mode="merge">
+    <uses-sdk android:minSdkVersion="19"  />
+  </edit-config>
+  </platform>
+
+</plugin>

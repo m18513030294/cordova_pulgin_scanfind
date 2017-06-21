@@ -1,0 +1,24 @@
+{
+  "name": "com-carshop-scancarid",
+  "version": "0.0.1",
+  "description": "Allow send message from Javascript to Native",
+  "cordova": {
+    "id": "com-carshop-scancarid",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.9.1"
+    }
+  ],
+  "author": "renbaiquan"
+}
